@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Bello Celebrations Client Form</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f4ff;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(245,248,255,0.95));
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, #1e40af, #dc2626);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .form-header img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .form-header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+        }
+        
+        .form-header p {
+            font-style: italic;
+            color: #f0f0f0;
+            margin: 10px 0 0;
+        }
+        
+        .form-body {
+            padding: 30px;
+            position: relative;
+        }
+        
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(30, 64, 175, 0.3);
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .section-title {
+            color: #1e40af;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(30, 64, 175, 0.3);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title span {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: white;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1 0 calc(50% - 10px);
+        }
+        
+        @media (max-width: 768px) {
+            .form-row .form-group {
+                flex: 1 0 100%;
+            }
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 8px;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #1e40af, #dc2626);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+            background: linear-gradient(135deg, #dc2626, #1e40af);
+        }
+        
+        .submit-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .form-footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ffffff, #f0f4ff);
+            border-top: 1px solid rgba(30, 64, 175, 0.2);
+        }
+        
+        .company-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .company-info div {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+        
+        .company-info div i {
+            margin-right: 8px;
+            color: #dc2626;
+        }
+        
+        .polygon-shape {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 90%;
+            height: 90%;
+            border: 2px solid rgba(30, 64, 175, 0.3);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Mi Bello Celebrations</h1>
+            <p>Creating Moments That Shimmer, Events That Last Forever</p>
+        </div>
+        <div class="form-body">
+            <form id="clientForm" action="https://formsubmit.co/garg.aditi51@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <div class="form-section">
+                    <h2 class="section-title"><span>1</span>Personal Information</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name*</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name*</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address*</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number*</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" class="form-control"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><span>2</span>Event Details</h2>
+                    <div class="form-group">
+                        <label for="eventType">Type of Event*</label>
+                        <select id="eventType" name="eventType" class="form-control" required>
+                            <option value="">Select Event Type</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="engagement">Engagement</option>
+                            <option value="birthday">Birthday Party</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="corporate">Corporate Event</option>
+                            <option value="baby-shower">Baby Shower</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="otherEventTypeGroup" style="display: none;">
+                        <label for="otherEventType">Please specify</label>
+                        <input type="text" id="otherEventType" name="otherEventType" class="form-control">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate">Event Date*</label>
+                            <input type="date" id="eventDate" name="eventDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guestCount">Estimated Number of Guests*</label>
+                            <input type="number" id="guestCount" name="guestCount" class="form-control" min="1" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventVenue">Venue (if known)</label>
+                        <input type="text" id="eventVenue" name="eventVenue" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Venue Type</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="venueHotel" name="venueType[]" value="hotel">
+                                <label for="venueHotel">Hotel</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="venueBanquet" name="venueType[]" value="banquet">
+                                <label for="venueBanquet">Banquet Hall</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="venueOutdoor" name="venueType[]" value="outdoor">
+                                <label for="venueOutdoor">Outdoor</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="venueBeach" name="venueType[]" value="beach">
+                                <label for="venueBeach">Beach</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="venueDestination" name="venueType[]" value="destination">
+                                <label for="venueDestination">Destination</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="form-section">
+                    <h2 class="section-title"><span>3</span>Services Required</h2>
+                    <div class="form-group">
+                        <label>Which services are you interested in?*</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceFullPlanning" name="services" value="full-planning">
+                                <label for="serviceFullPlanning">Full Event Planning</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="servicePartialPlanning" name="services" value="partial-planning">
+                                <label for="servicePartialPlanning">Partial Planning</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceDecor" name="services" value="decor">
+                                <label for="serviceDecor">Décor & Design</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceCoordination" name="services" value="coordination">
+                                <label for="serviceCoordination">Day-of Coordination</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceConsultation" name="services" value="consultation">
+                                <label for="serviceConsultation">Consultation Only</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Additional Services</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceVendor" name="additionalServices" value="vendor">
+                                <label for="serviceVendor">Vendor Selection</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceGuest" name="additionalServices" value="guest">
+                                <label for="serviceGuest">Guest Management</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceBudget" name="additionalServices" value="budget">
+                                <label for="serviceBudget">Budget Planning</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceTimeline" name="additionalServices" value="timeline">
+                                <label for="serviceTimeline">Timeline Creation</label>
+                            </div>
+                            <div class="checkbox-option">
+                                <input type="checkbox" id="serviceTheme" name="additionalServices" value="theme">
+                                <label for="serviceTheme">Theme Development</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h2 class="section-title"><span>4</span>Budget & Preferences</h2>
+                    <div class="form-group">
+                        <label for="budget">Estimated Budget Range*</label>
+                        <select id="budget" class="form-control" required>
+                            <option value="">Select Budget Range</option>
+                            <option value="under-100k">Under ₹1,00,000</option>
+                            <option value="100k-300k">₹1,00,000 - ₹3,00,000</option>
+                            <option value="300k-500k">₹3,00,000 - ₹5,00,000</option>
+                            <option value="500k-1000k">₹5,00,000 - ₹10,00,000</option>
+                            <option value="over-1000k">Over ₹10,00,000</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="colorScheme">Preferred Color Scheme</label>
+                        <input type="text" id="colorScheme" class="form-control" placeholder="e.g. Blush pink and gold">
+                    </div>
+                    <div class="form-group">
+                        <label for="theme">Event Theme or Style</label>
+                        <input type="text" id="theme" class="form-control" placeholder="e.g. Modern, Traditional, Rustic, Bohemian">
+                    </div>
+                    <div class="form-group">
+                        <label for="inspiration">Inspiration or References</label>
+                        <textarea id="inspiration" class="form-control" placeholder="Share any inspiration photos, Pinterest boards, or ideas you have in mind"></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><span>5</span>Additional Information</h2>
+                    <div class="form-group">
+                        <label for="hearAbout">How did you hear about Mi Bello Celebrations?</label>
+                        <select id="hearAbout" class="form-control">
+                            <option value="">Select an option</option>
+                            <option value="social">Social Media</option>
+                            <option value="search">Google Search</option>
+                            <option value="referral">Friend/Family Referral</option>
+                            <option value="vendor">Vendor Referral</option>
+                            <option value="event">Attended a Mi Bello Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="additionalInfo">Any additional information or special requests?</label>
+                        <textarea id="additionalInfo" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn">Submit Inquiry</button>
+                </div>
+            </form>
+        </div>
+        <div class="form-footer">
+            <div class="company-info">
+                <div>
+                    <i class="fas fa-building"></i>
+                    524, Western Business Park, opposite S.D. Jain school, Vesu, Surat, Gujarat 395007
+                </div>
+                <div>
+                    <i class="fas fa-mobile-alt"></i>
+                    +91 9819383430
+                </div>
+                <div>
+                    <i class="fas fa-at"></i>
+                    mibellocelebrations@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('eventDate').setAttribute('min', today);
+        });
+
+        document.getElementById('eventType').addEventListener('change', function() {
+            const otherGroup = document.getElementById('otherEventTypeGroup');
+            const budgetSelect = document.getElementById('budget');
+
+            if (this.value === 'other') {
+                otherGroup.style.display = 'block';
+                document.getElementById('otherEventType').required = true;
+            } else {
+                otherGroup.style.display = 'none';
+                document.getElementById('otherEventType').required = false;
+            }
+
+            if (this.value === 'wedding') {
+                budgetSelect.innerHTML = `
+                    <option value="">Select Budget Range</option>
+                    <option value="500k-1000k">₹5,00,000 - ₹10,00,000</option>
+                    <option value="1000k-2000k">₹10,00,000 - ₹20,00,000</option>
+                    <option value="2000k-3500k">₹20,00,000 - ₹35,00,000</option>
+                    <option value="3500k-5000k">₹35,00,000 - ₹50,00,000</option>
+                    <option value="5000k-7500k">₹50,00,000 - ₹75,00,000</option>
+                    <option value="7500k-10000k">₹75,00,000 - ₹1,00,00,000</option>
+                    <option value="over-10000k">Over ₹1,00,00,000</option>`;
+            } else {
+                budgetSelect.innerHTML = `
+                    <option value="">Select Budget Range</option>
+                    <option value="under-100k">Under ₹1,00,000</option>
+                    <option value="100k-300k">₹1,00,000 - ₹3,00,000</option>
+                    <option value="300k-500k">₹3,00,000 - ₹5,00,000</option>
+                    <option value="500k-1000k">₹5,00,000 - ₹10,00,000</option>
+                    <option value="over-1000k">Over ₹10,00,000</option>`;
+            }
+        });
+    </script>
+</body>
+</html>
